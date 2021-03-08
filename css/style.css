@@ -102,9 +102,10 @@ h3 {
 }
 
 p {
+	font-size: 15px;
 	line-height: 20px;
 	/* within paragraph */
-	margin-bottom: 4px;
+	margin-bottom: 1px;
 	/* between paragraphs */
 }
 
@@ -571,4 +572,250 @@ header {
 	max-width: 1000px;
 	margin: 0 auto;
 	color: var(--clr-light);
+}
+
+
+/* The actual timeline-experience (the vertical ruler) */
+
+.timeline-experience {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.timeline-edu {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+
+/* The actual timeline-experience (the vertical ruler) */
+
+.timeline-experience::after {
+	content: "";
+	position: absolute;
+	width: 2px;
+	background-color: var(--clr-accent);
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin-left: -3px;
+}
+
+.timeline-edu::after {
+	content: "";
+	position: absolute;
+	width: 2px;
+	background-color: var(--clr-dark);
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin-left: -3px;
+}
+
+
+/* Container around content */
+
+.container-experience {
+	padding: 10px 40px;
+	position: relative;
+	background-color: inherit;
+	width: 50%;
+}
+
+.container-edu {
+	padding: 10px 40px;
+	position: relative;
+	background-color: inherit;
+	width: 50%;
+}
+
+
+/* The circles on the timeline-experience */
+
+.container-experience::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: -8px;
+	background-color: rgb(248, 193, 184);
+	top: 15px;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.container-edu::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: -8px;
+	background-color: var(--clr-dark);
+	top: 15px;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+
+/* Place the container to the left */
+
+.left-experience {
+	left: 0;
+}
+
+
+/* Place the container to the right */
+
+.right-experience {
+	left: 50%;
+}
+
+.left-edu {
+	left: 0;
+}
+
+
+/* Place the container to the right */
+
+.right-edu {
+	left: 50%;
+}
+
+
+/* Add arrows to the left container (pointing right) */
+
+.left-experience::before {
+	content: " ";
+	height: 0;
+	position: absolute;
+	top: 22px;
+	width: 0;
+	z-index: 1;
+	right: 30px;
+	border: medium solid white;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent var(--clr-dark);
+}
+
+
+/* Add arrows to the right container (pointing left) */
+
+.right-experience::before {
+	content: " ";
+	height: 0;
+	position: absolute;
+	top: 22px;
+	width: 0;
+	z-index: 1;
+	left: 30px;
+	border: medium solid var(--clr-dark);
+	border-width: 10px 10px 10px 0;
+	border-color: transparent var(--clr-dark);
+}
+
+.left-edu::before {
+	content: " ";
+	height: 0;
+	position: absolute;
+	top: 22px;
+	width: 0;
+	z-index: 1;
+	right: 30px;
+	border: medium solid white;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent var(--clr-dark);
+}
+
+
+/* Add arrows to the right container (pointing left) */
+
+.right-edu::before {
+	content: " ";
+	height: 0;
+	position: absolute;
+	top: 22px;
+	width: 0;
+	z-index: 1;
+	left: 30px;
+	border: medium solid var(--clr-dark);
+	border-width: 10px 10px 10px 0;
+	border-color: transparent var(--clr-dark);
+}
+
+
+/* Fix the circle for containers on the right side */
+
+.right-experience::after {
+	left: -11px;
+}
+
+.right-edu::after {
+	left: -11px;
+}
+
+
+/* The actual content */
+
+.content-experience {
+	padding: 20px 30px;
+	background-color: var(--clr-accent);
+	position: relative;
+	border-radius: 6px;
+	color: var(--clr-dark);
+}
+
+.content-edu {
+	padding: 20px 30px;
+	background-color: var(--clr-dark);
+	position: relative;
+	border-radius: 6px;
+	color: var(--clr-light);
+}
+
+
+/* Media queries - Responsive timeline-experience-experience on screens less than 600px wide */
+
+@media screen and (max-width: 600px) {
+	/* Place the timelime to the left */
+	.timeline-experience::after {
+		left: 31px;
+	}
+	.timeline-edu::after {
+		left: 31px;
+	}
+	/* Full-width containers */
+	.container-experience {
+		width: 100%;
+		padding-left: 70px;
+		padding-right: 25px;
+	}
+	.container-edu {
+		width: 100%;
+		padding-left: 70px;
+		padding-right: 25px;
+	}
+	/* Make sure that all arrows are pointing leftwards */
+	.container-experience::before {
+		left: 60px;
+		border: medium solid white;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent white transparent transparent;
+	}
+	.container-edu::before {
+		left: 60px;
+		border: medium solid white;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent white transparent transparent;
+	}
+	/* Make sure all circles are at the same spot */
+	.left::after,
+	.right::after {
+		left: 15px;
+	}
+	/* Make all right containers behave like the left ones */
+	.right {
+		left: 0%;
+	}
 }
